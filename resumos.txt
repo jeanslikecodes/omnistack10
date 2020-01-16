@@ -1,0 +1,180 @@
+﻿Aula 02
+
+Arquitetura da aplicação
+
+    Back-end:
+        - regras de negócio
+        - conexão banco de dados (relacional ou não)
+        - envio de e-mail
+        - comunicação com websrvices (consulta de cep, calculo de frete e etc)
+        - autenticação do usuário
+        - criptografia e segurança
+
+    Criar uma API (Aplication Programing Interface) Restfull (Seguindo regras para utilizar a API)
+
+    back-end            front-end
+    
+               json     react (web)
+    node.js    json     react native (mobile)
+               json     outros serviços (camada que pode ser visualizada)
+
+    json (js object notation) envia dados entre node e react
+
+
+    >>> criando estrutura do projeto
+
+    mkdir semanaomnistack (cria pasta semanaomnistack/)
+
+    cd semanaomnistack (seleciona pasta semanaomnistack/)
+
+    mkdir backend (cria pasta backend/ dentro de semanaomnistack/)
+
+    cd backend (seleciona pasta backend/)
+	
+    yarn init -y (inicia yarn, isto não irá fazer perguntas sobre o projeto que não são importantes [no momento]) cria pacote .json, onde diz que o projeto será java script, armazenando as caracteristicas do projeto
+
+	*o npm e o yarn são gerenciadores de pacotes, serão responsaveis por instalar novas ferramentas/pacotes/bibliotecas dentro do projetos, seja biblioteca para fazer integração com os correios/imprimir nfe/gerar pdf/imprimir boleto, para que não seja sempre feito código todas as vezes*
+
+    code . (abre o vscode na pasta onde está o power shell)
+
+    * crtl + aspas  e abre o terminal do vscode *
+
+   yarn add express (instação do express, gerou arquivo yarn.lock [infos dos pacotes instalados no projeto] e pasta node_modules/ [todos os pacotes que nossos pacotes tem como dependencia (pois um pacote por depender de outro pacote)], isto cria o campo dependencios no package.json onde o projeto depende da biblioteca express na versão x)
+
+   criar o arquivo index.js
+
+	* ~entendendo o express~ toda aplicação possui rotas (www.omnistack.com/users), que no caso é o /users, isso é a rota/recurso que vocês está acessando da aplicação (omnistack e recurso users), o express ajuda principalmente na criação das rotas da aplicação, criar o servidor, botar no ar* 
+
+	* express é quase um micro framework *
+
+   node index.js > roda a aplicação no localhost definido
+
+   yarn add nodemon -D *-D = dependencia de desenvolvimento, ela só em utilizada em desenvolvimento* nodemon serve para 'escutar as atualizações da aplicação e atualizar o localhost
+
+
+   yarn nodemon index.js > o servidor irá rodar e acompanhar as atualizações automaticamente
+
+* adidiconadno'script' no package.json onde 'yarn dev' roda o 'nodemon index.js'
+
+// ctrl + c para o servidor
+
+// requeste é a requisição, tudo que vem do front-end (ex: informações de cadastro)
+// response é tudo que iramos devolver mediante a uma requisição ou não (ex: hello world)
+
+// metodos http > get, post, put, delete
+// get > pegar, post > colocar, put > editar, delete > excluir
+
+ * para utilizar/testar as rotas, deve se utilizar a insominia.rest 
+        
+
+// tipos de paramentros > 
+	query params: request.query (filtros, ordenação, paginação), 
+	route params[put/delete]: request.params (idfentifica rum recurso na alteraão ou remoção) é utilizado pois irá alterar/deletar apenas um item/registro
+	body [post/put]: request.body (dados para criação ou alteração de um registro
+
+// mongo db (nao-relacional)
+
+$ yarn add mongoose > biblioteca que da acesso do node dentro da base do mongo
+
+// src/models > entidades que voce irá armazenar dentro do banco de dados
+
+$ yarn add axios > faz chamada para outras apis
+
+// async > flag antes da função que avisa que ela pode demorar pra responder
+
+
+
+
+AULA 03
+
+	abordagem tradicional > sem utilização de framework no front-end, o browser faz a requisição pro backend (por página) e a resposta do banco de dados é uma página contendo html/css/js (template-end), então ela acaba limitando o front-end pro browser (não consegue ter essa aplicação em varias maneiras [mobile/admin/user], fazendo com que não seja possível utilizar essas informações pois o back-end retorna um html, fazendo com que seja dificil interpretar essas infos.
+
+
+	abordagem spa (single-page applications) > a requisição retorna apenas dados (json), e com isto o fron-end pode preencher as informações na tela, o html/css/js é carregado pelo browser, o servidor nao tem responsbailidade pela parte de interface. ex: em listar usuários, retorna apenas a lista (array) de usuarios
+
+
+
+criar projeto do 0 usando react, utilizando uma ferramenta, pois o react tem dependencias, então pra nao precisar isntalar, ja cria um projeto inicial
+
+$ yarn create react-app web > web e a pasta que cria do react, dentro da pasta onde tb tem a pasta backend
+
+
+dom eh o html, a pagina
+
+
+diferenças entre react/node, possui arquivos estruturais, de estilização (css), o html/css irão ficar dentro da pasta src
+
+pasta public > arquivos que precisam ficar de forma publica (favico, index.html) e arquivos pwa (progressive web apps) [criação de apps mbile baseados em sites html
+
+
+robots.txt > contem quais paginas serão indexadas (no caso todas, neste projeto)
+
+$ yarn start > starta a aplicação react (abre automatico locahost:/3000)
+
+dentro da pasta src
+
+index.js > arquivo principal da aplicação, não pode mudar (não em questão de alteração)
+
+deletar o app.css, app.test.js, index.css, logo.svg, serviceWorker.js, setupTestsjs
+
+abrir index.js > deletar importação do index.css, serviceWorker.js e a parte do comentário para baixo
+
+utiliza 'importe Reacl from 'react';' em todo arquivo js que for utilizar html dentro dele
+
+jsx > mistura de js + xml (html)
+
+
+primeiro a parte estrutural/visual (html/css), e depois parte funcional
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
